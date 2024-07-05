@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="header-white-background">
+    <ion-buttons slot="start">
+      <ion-menu-button auto-hide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="titulo-centrado">Mi Historial</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<div class="fondo-con-lineas" id="fondoConLineas">
+  <ion-content [fullscreen]="true">
+    <ion-header>
+      <ion-toolbar color="secondary">
+        <ion-title size="large">Historial de Incidentes</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-list>
+      <ion-item *ngFor="let incident of incidents">
+        <ion-label>
+          <h2>Tipo: {{ incident.type }}</h2>
+          <p>Descripción: {{ incident.description }}</p>
+          <p>Zona: {{ incident.place }}</p>
+          <p>Piso: {{ incident.floor }}</p>
+          <p>Fecha: {{ incident.date }}</p>
+          <p><strong>Foto:</strong></p>
+          <ion-img [src]="incident.photo" *ngIf="incident.photo"></ion-img>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</div>

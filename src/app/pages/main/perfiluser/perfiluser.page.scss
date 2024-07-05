@@ -1,0 +1,28 @@
+.report-success-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  background-color: #ffffff; /* Fondo blanco */
+}
+
+.success-icon {
+  font-size: 390px; /* Tamaño del ícono reducido */
+  color: #4CAF50; /* Verde */
+  margin-bottom: 20px;
+}
+
+.success-message {
+  font-size: 18px; /* Tamaño de fuente ligeramente más pequeño */
+  font-weight: bold;
+  margin-top: 20px; /* Ajuste del margen superior */
+  margin-bottom: 20px; /* Ajuste del margen inferior */
+  color: #000000; /* Texto en negro */
+}
+
+ion-card {
+  width: 95%; /* Opcional, para ocupar todo el ancho */
+  height: 97%; /* Opcional, para ocupar todo el alto */
+}

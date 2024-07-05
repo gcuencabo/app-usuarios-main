@@ -1,0 +1,17 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>REPORTE FINALIZADO</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="report-success-container">
+  <ion-card *ngIf="user">
+    <ion-icon name="checkmark-circle-outline" class="success-icon"></ion-icon>
+    <p class="success-message">REPORTE GENERADO CON EXITO!</p>
+    <ion-button expand="block" (click)="navigateToperfiluser()">Finalizar</ion-button>
+  </ion-card>
+</ion-content>
+
+
+
+

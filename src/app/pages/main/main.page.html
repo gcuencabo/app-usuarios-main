@@ -1,0 +1,34 @@
+<ion-menu contentId="main-content" menuId="main-menu" side="start" type="overlay">
+  <!-- Menu Header -->
+  <ion-header>
+    <app-header title="Menú"></app-header>
+  </ion-header>
+
+  <!-- Menu Content -->
+  <ion-content>
+    <div class="user-icon">
+      <ion-icon name="person-circle-outline"></ion-icon>
+    </div>
+
+    <ion-card-title>ESTUDIANTE</ion-card-title>
+    <!-- User Information Card -->
+    <ion-card *ngIf="user">
+      <ion-card-content>
+        <p><strong>Nombre:</strong> {{ user.name }}</p>
+        <p><strong>Código:</strong> {{ user.code }}</p>
+      </ion-card-content>
+      <ion-button expand="full" (click)="navigateToEditProfile()">Editar Perfil</ion-button>
+    </ion-card>
+
+    <!-- Conditionally display the "Mi Reporte" button -->
+    <ion-button *ngIf="isHistorialPage()" expand="full" (click)="navigateTo('/main/incidente')">Mi Reporte</ion-button>
+    <ion-button expand="full" (click)="navigateTo('/main/historial')">Mi Historial</ion-button>
+
+    <ion-button expand="full" (click)="signOut()" color="secondary">
+      Cerrar Sesión
+    </ion-button>
+  </ion-content>
+</ion-menu>
+
+<!-- Main Content Outlet -->
+<ion-router-outlet id="main-content"></ion-router-outlet>

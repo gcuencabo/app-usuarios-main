@@ -1,0 +1,61 @@
+.date-container {
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 12vh;
+}
+
+.BtonA {
+  --background: #154b8a;
+  --background-hover: #8191ec;
+  --color: #ffffff;
+  width: 160px;
+  height: 60px;
+  border-radius: 10px;
+  background-color: #e0e0e0;
+  box-shadow: 5px 5px 15px #bebebe, -5px -5px 15px #ffffff;
+}
+
+.custom-label {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.custom-input {
+  --padding-start: 8px;
+  --padding-end: 8px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+
+
+.logo-imagen {
+  width: 450px;
+  height: 150px;
+}
+
+.fondo-con-lineas {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  z-index: -1;
+}
+
+ion-title {
+  font-family: cursive, sans-serif;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}

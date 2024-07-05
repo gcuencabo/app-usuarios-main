@@ -1,0 +1,94 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="header-white-background">
+    <ion-buttons slot="start">
+      <ion-menu-button auto-hide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="titulo-centrado">INICIO REPORTE</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<div class="fondo-con-lineas" id="fondoConLineas">
+  <ion-content [fullscreen]="true">
+    <ion-header>
+      <ion-toolbar color="secondary">
+        <ion-title size="large">REPORTE DE INCIDENCIA</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <div class="form-container">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>NUEVO INCIDENTE</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-item class="custom-item">
+            <ion-label position="stacked" class="custom-label">SERVICIO:</ion-label>
+            <ion-select interface="popover" [(ngModel)]="incidentType" (ionChange)="enableDescriptionAndPlace()">
+              <ion-select-option value="Mantenimiento">Mantenimiento</ion-select-option>
+              <ion-select-option value="Seguridad">Seguridad</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item class="custom-item" *ngIf="descriptionOptions.length > 0">
+            <ion-label position="stacked" class="custom-label">Descripción:</ion-label>
+            <ion-select interface="popover" [(ngModel)]="incidentDescription" (ionChange)="onDescriptionChange()">
+              <ion-select-option *ngFor="let option of descriptionOptions" [value]="option">{{ option }}</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item class="custom-item" *ngIf="descriptionOptions.length > 0 && mostrarTextarea">
+            <ion-label position="stacked" class="custom-label">Descripción Detallada:</ion-label>
+            <ion-textarea [(ngModel)]="incidentDescriptionDetallada" class="custom-input"
+              placeholder="Escribe una descripción"></ion-textarea>
+          </ion-item>
+
+          <ion-item class="custom-item" *ngIf="incidentDescription && incidentDescription !== 'Otros'">
+            <ion-label position="stacked" class="custom-label">Zona:</ion-label>
+            <ion-select interface="popover" [(ngModel)]="incidentPlace" (ionChange)="updateFloorOptions()">
+              <ion-select-option value="Pabellón A">Pabellón A</ion-select-option>
+              <ion-select-option value="Pabellón B">Pabellón B</ion-select-option>
+              <ion-select-option value="Pabellón C">Pabellón C</ion-select-option>
+              <ion-select-option value="Pabellón D">Pabellón D</ion-select-option>
+              <ion-select-option value="Pabellón E">Pabellón E</ion-select-option>
+              <ion-select-option value="Admisión">Admisión</ion-select-option>
+              <ion-select-option value="Laboratorios de investigación">Laboratorios de investigación</ion-select-option>
+              <ion-select-option value="Biblioteca">Biblioteca</ion-select-option>
+              <ion-select-option value="Áreas administrativas">Áreas administrativas</ion-select-option>
+              <ion-select-option value="Auditorio Mágnum">Auditorio Mágnum</ion-select-option>
+              <ion-select-option value="Auditorio Los Caynas">Auditorio Los Caynas</ion-select-option>
+              <ion-select-option value="Otro lugar">Otro Lugar</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item class="custom-item" *ngIf="incidentPlace === 'Otro lugar'">
+            <ion-label position="stacked" class="custom-label">Especificar lugar:</ion-label>
+            <ion-input type="text" [(ngModel)]="otroLugar"></ion-input>
+          </ion-item>
+
+          <ion-item class="custom-item" *ngIf="incidentPlace !== 'Otro lugar' && incidentPlace">
+            <ion-label position="stacked" class="custom-label">Piso:</ion-label>
+            <ion-select interface="popover" [(ngModel)]="incidentFloor">
+              <ion-select-option *ngFor="let floor of floorOptions" [value]="floor">{{ floor }}</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <!-- Captura de foto -->
+          <ion-item *ngIf="incidentType && incidentDescription && incidentPlace && incidentFloor" class="custom-item">
+            <ion-label>Foto </ion-label>
+            <ion-button expand="block" (click)="takePicture()">Tomar Foto</ion-button>
+          </ion-item>
+
+          <!-- Mostrar la foto capturada -->
+          <ion-item *ngIf="photo">
+            <img [src]="photo" style="max-width: 100%; height: auto;">
+          </ion-item>
+
+          <div class="button-container">
+            <ion-button class="BtonA" size="small" (click)="addIncident();" [disabled]="!descriptionEnabled"> REPORTAR
+            </ion-button>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </ion-content>
+</div>
