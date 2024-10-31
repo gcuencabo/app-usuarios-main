@@ -1,42 +1,31 @@
-<app-header title=""></app-header>
-<ion-content>
-  
+<app-header></app-header>
+<ion-content class="login-background">
+
   <div class="d-flex-center">
 
     <form [formGroup]="form" class="login-form" (ngSubmit)="submit()" (keypress.enter)="submit()">
-    
-      <app-logo></app-logo>
 
-      <app-custom-input
-      auttocomplete="email"
-      [control]="form.controls.email"
-      type="email"
-      label="Correo electrónico"
-      ></app-custom-input>
-      
-      <div class="validators"  *ngIf="form.controls.email.errors && form.controls.email.touched">
+      <h1 class="title">CAMPUS INCIDENTS</h1>
 
-        <div *ngIf="form.controls.email.errors?.['required']">Se necesita un correo valido</div>
-        <div *ngIf="form.controls.email.errors?.['email']">Registre un correo valido</div>
+      <app-custom-input auttocomplete="email" [control]="form.controls.email" type="email"
+        label="Correo electrónico"></app-custom-input>
 
+      <div class="validators" *ngIf="form.controls.email.errors && form.controls.email.touched">
+        <div *ngIf="form.controls.email.errors?.['required']">Se necesita un correo válido</div>
+        <div *ngIf="form.controls.email.errors?.['email']">Registre un correo válido</div>
       </div>
-    
-      <app-custom-input 
-      [control]="form.controls.password"
-      type="password"
-      label="Contraseña"
-      ></app-custom-input>
-  
+
+      <app-custom-input [control]="form.controls.password" type="password" label="Contraseña"></app-custom-input>
+
       <div class="validators" *ngIf="form.controls.password.errors && form.controls.password.touched">
-        <div *ngIf="form.controls.password.errors?.['required']">Se necesita una contraseña valida</div>
-
+        <div *ngIf="form.controls.password.errors?.['required']">Se necesita una contraseña válida</div>
       </div>
 
-      <p routerLink="forgot-password" class="ion-text-end">¿Olvidó tu contraseña?</p>
-  
-      <ion-button expand="block" color="secondary" mode="ios" class="submit" type="submit" [disabled]="form.invalid">
+      <p routerLink="forgot-password" class="ion-text-end">¿Olvidaste tu contraseña?</p>
+
+      <ion-button expand="block" color="secondary" mode="ios" class="submit-button" type="submit"
+        [disabled]="form.invalid">
         Ingresar
-        <ion-icon slot="end" name="log-in-outline"></ion-icon>
       </ion-button>
 
     </form>

@@ -15,7 +15,7 @@ export class PerfilUserPage implements OnInit {
   constructor(
     private firebaseSvc: FirebaseService,
     private utilsSvc: UtilsService,
-    private router: Router  // Añade Router al constructor
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -53,7 +53,6 @@ export class PerfilUserPage implements OnInit {
     }
   }
 
-  // Método para navegar de regreso
   navigateToperfiluser() {
     this.router.navigate(['./main/incidente']);
   }

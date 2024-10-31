@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-icon name="filter-outline"></ion-icon>
+    </ion-buttons>
+    <ion-title>Filtros</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="floating">Fecha de inicio</ion-label>
+    <ion-datetime
+      displayFormat="DD/MM/YYYY"
+      presentation="date"
+      [(ngModel)]="startDate"
+      [min]="undefined"  
+      [max]="''" 
+      [cancelText]="'Cancelar'"
+      [doneText]="'Aceptar'"
+    ></ion-datetime>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Fecha de finalización</ion-label>
+    <ion-datetime
+      displayFormat="DD/MM/YYYY"
+      presentation="date"
+      [(ngModel)]="endDate"
+      [max]="''"  
+      [cancelText]="'Cancelar'" 
+      [doneText]="'Aceptar'"
+    ></ion-datetime>
+  </ion-item>
+
+  <ion-button expand="full" (click)="applyFilter()">Aplicar Filtro</ion-button>
+  <ion-button expand="full" (click)="clearFilters()">Borrar Filtros</ion-button>
+</ion-content>

@@ -12,11 +12,16 @@
     <ion-header>
       <ion-toolbar color="secondary">
         <ion-title size="large">Historial de Incidentes</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="openFilterModal()">
+            <ion-icon name="filter-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
       </ion-toolbar>
     </ion-header>
 
     <ion-list>
-      <ion-item *ngFor="let incident of incidents">
+      <ion-item *ngFor="let incident of filteredIncidents">
         <ion-label>
           <h2>Tipo: {{ incident.type }}</h2>
           <p>Descripción: {{ incident.description }}</p>

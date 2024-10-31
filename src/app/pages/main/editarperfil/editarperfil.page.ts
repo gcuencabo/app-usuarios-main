@@ -62,7 +62,6 @@ export class EditarPerfilPage implements OnInit {
           icon: 'checkmark-circle-outline'
         });
         
-        // Refrescar la página
         this.router.navigate(['/main/salas']).then(() => {
           window.location.reload();
         });

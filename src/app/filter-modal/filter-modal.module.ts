@@ -1,20 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
-import { PerfilPageRoutingModule } from './perfil-routing.module';
-
-import { PerfilPage } from './perfil.page';
+import { FilterModalComponent } from './filter-modal.component';
 
 @NgModule({
+  declarations: [FilterModalComponent],
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule,
-    PerfilPageRoutingModule
+    IonicModule
   ],
-  declarations: [PerfilPage]
+  exports: [FilterModalComponent], // Asegúrate de exportar el componente
 })
-export class PerfilPageModule {}
+export class FilterModalModule {}

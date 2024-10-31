@@ -6,6 +6,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { FilterModalModule } from './filter-modal/filter-modal.module';
 
 
 // ====== Firebase ==========
@@ -19,6 +20,7 @@ import { environment } from 'src/environments/environment';
     BrowserModule,
     IonicModule.forRoot({mode: 'md'}),
     AppRoutingModule,
+    FilterModalModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

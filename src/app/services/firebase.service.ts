@@ -69,7 +69,7 @@ export class FirebaseService {
     try {
       const image = await Camera.getPhoto({
         quality: 90,
-        allowEditing: false,
+        allowEditing: true,
         resultType: CameraResultType.DataUrl,
         source: CameraSource.Camera,
       });
@@ -81,16 +81,16 @@ export class FirebaseService {
     }
   }
 
-  // Método para subir la foto a Firebase Storage
+
   async uploadPhotoToFirebase(dataUrl: string): Promise<string> {
     const storageRef = this.getStorageReference();
     const fileName = `${new Date().getTime()}.jpg`;
 
-    const photoRef = this.getStorageChildReference(storageRef, fileName); // Referencia del archivo en Storage
-    await this.uploadStringToStorage(photoRef, dataUrl, 'data_url'); // Subir la foto como string
+    const photoRef = this.getStorageChildReference(storageRef, fileName);
+    await this.uploadStringToStorage(photoRef, dataUrl, 'data_url'); 
 
-    const downloadUrl = await this.getDownloadURL(photoRef); // Obtener la URL de descarga
-    return downloadUrl; // Devolver la URL de la foto subida
+    const downloadUrl = await this.getDownloadURL(photoRef);
+    return downloadUrl;
   }
 
   

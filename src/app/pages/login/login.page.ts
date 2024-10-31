@@ -9,7 +9,7 @@ import { User } from 'src/app/models/user.model';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage {
 
   form = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -18,9 +18,6 @@ export class LoginPage implements OnInit {
 
 firesabeSvc = inject(FirebaseService);
 utilsSvc = inject(UtilsService)
-
-  ngOnInit() {
-  }
 
   async submit() {
     if (this.form.valid) {
@@ -33,7 +30,7 @@ utilsSvc = inject(UtilsService)
       try {
         const user = await this.firesabeSvc.getUserByEmail(email);
         if (user && user.password === password) {
-          this.utilsSvc.routink('/main/incidente');  // Redirige a la página de administración
+          this.utilsSvc.routink('/main/incidente');
           this.getUserInfo(email);
         } else {
           throw new Error('Verifica tu correo o contraseña');
@@ -42,9 +39,9 @@ utilsSvc = inject(UtilsService)
         console.log(error);
 
         this.utilsSvc.presentToast({
-          message: error.message || 'Has tenido un error: Verifica tu correo o contraseña',
+          message: error.message || 'Ha ocurrido un error: Verifica tu correo o contraseña',
           duration: 2000,
-          color: 'secondary',
+          color: 'danger',
           position: 'middle'
         });
       } finally {
@@ -71,8 +68,8 @@ utilsSvc = inject(UtilsService)
 
       this.utilsSvc.presentToast({
         message: error.message,
-        duration: 15000,
-        color: 'secondary',
+        duration: 2000,
+        color: 'danger',
         position: 'middle',
       });
     } finally {

@@ -1,9 +1,23 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { Component, OnInit, enableProdMode, inject } from '@angular/core';
+import { Title, platformBrowser } from '@angular/platform-browser';
 import { Router, Event, NavigationEnd } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { UtilsService } from 'src/app/services/utils.service';
+import { defineCustomElements } from '@ionic/pwa-elements/loader';
+import { environment } from 'src/environments/environment';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppModule } from 'src/app/app.module';
+
+if (environment.production) {
+  enableProdMode();
+}
+
+platformBrowserDynamic()
+  .bootstrapModule(AppModule)
+  .catch((err) => console.log(err));
+
+defineCustomElements(window);
 
 @Component({
   selector: 'app-main',
@@ -12,9 +26,7 @@ import { UtilsService } from 'src/app/services/utils.service';
 })
 export class MainPage implements OnInit {
   user: any = {};
-  pages = [
-    { title: 'Mi Historial', url: '/main/historial' },
-  ];
+  pages = [{ title: 'Mi Historial', url: '/main/historial' }];
 
   router = inject(Router);
   firebaseSvc = inject(FirebaseService);
@@ -50,7 +62,7 @@ export class MainPage implements OnInit {
           duration: 1500,
           color: 'secondary',
           position: 'middle',
-          icon: 'alert-circle-outline'
+          icon: 'alert-circle-outline',
         });
       } finally {
         loading.dismiss();
@@ -69,7 +81,7 @@ export class MainPage implements OnInit {
           duration: 1500,
           color: 'success',
           position: 'middle',
-          icon: 'checkmark-circle-outline'
+          icon: 'checkmark-circle-outline',
         });
       } catch (error: any) {
         console.log(error);
@@ -78,7 +90,7 @@ export class MainPage implements OnInit {
           duration: 1500,
           color: 'secondary',
           position: 'middle',
-          icon: 'alert-circle-outline'
+          icon: 'alert-circle-outline',
         });
       } finally {
         loading.dismiss();
@@ -100,7 +112,7 @@ export class MainPage implements OnInit {
 
   async signOut() {
     try {
-      this.utilsSvc.removeItem('user');  // Use the correct method to clear local storage
+      this.utilsSvc.removeItem('user');
       this.utilsSvc.routink('/login');
     } catch (error) {
       console.error('Error during sign out:', error);
@@ -109,7 +121,7 @@ export class MainPage implements OnInit {
         duration: 2000,
         color: 'danger',
         position: 'middle',
-        icon: 'alert-circle-outline'
+        icon: 'alert-circle-outline',
       });
     }
   }
