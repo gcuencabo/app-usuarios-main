@@ -20,7 +20,13 @@
       </ion-toolbar>
     </ion-header>
 
-    <ion-list>
+    <!-- Contenedor del mensaje centrado -->
+    <div *ngIf="filteredIncidents.length === 0" class="no-results-container">
+      <ion-label class="no-results-message">No se encontraron incidencias con los criterios seleccionados</ion-label>
+    </div>
+
+    <!-- Lista de incidentes si hay resultados -->
+    <ion-list *ngIf="filteredIncidents.length > 0">
       <ion-item *ngFor="let incident of filteredIncidents">
         <ion-label>
           <h2>Tipo: {{ incident.type }}</h2>
